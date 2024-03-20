@@ -55,10 +55,19 @@ $(document).ready(function(){
             if(username.length < 1){
                 $("#uname").after('<br><span class="error"> this field is required</span>');
             }else{
-                var nameReg = /^[A-Za-z]+$/ ;
+                var nameReg = "/^[A-Za-z]+$/" ;
                 var validName = nameReg.test("username")
                 if(!validName){
                     $("#uname").after('<br><span class="error"> enter a valid input</span>');
+                }
+            }
+            if(email.length < 1){
+                $("#email").after('<br><span class="error"> this field is required</span>');
+            }else{
+                var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/                
+                var validemail = emailReg.test("email")
+                if(!validemail){
+                    $("#email").after('<br><span class="error"> enter a valid input</span>');
                 }
             }
 
