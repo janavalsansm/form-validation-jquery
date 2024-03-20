@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="form.css">
+</head>
+<script>
+    // $(document).ready(function(){
+    //       $("#submit").on(function(e){
+    //         e.preventDefault();
+    //         var username = $("#uname").val();
+    //         var email = $("#email").val();
+    //         var password = $("#password").val();
+
+    //         $(".error").remove();
+    //         if(username.length < 1){
+    //             $("uname").after('<span class="error"> this field is required</span>');
+    //         }
+    //       })
+    // })
+//     $(document).ready(function(){
+//         // function submitfn(event){
+//         //     event.preventDefault();
+//         // }
+//         $('#submit').on('click', function() {  
+//             errorMessage = "" 
+           
+//     if ($('#uname').val() == '') {
+//         $('#uname').after('<br><p class="error"> this field is required</p>');
+        
+//     }
+
+//     if ($('#email').val() == '') {
+//         $('#email').after('<br><p class="error"> this field is required</p>');
+         
+//     }   
+//     if( !valid && errorMessage.length > 0){
+//        alert(errorMessage);
+//     }  
+// });
+//     })
+      
+
+$(document).ready(function(){
+    $('#submit').click(function(e){
+        e.preventDefault();
+            var username = $("#uname").val();
+            var email = $("#email").val();
+            var password = $("#password").val();
+
+            $(".error").remove();
+            if(username.length < 1){
+                $("#uname").after('<br><span class="error"> this field is required</span>');
+            }else{
+                var nameReg = /^[A-Za-z]+$/ ;
+                var validName = nameReg.test("username")
+                if(!validName){
+                    $("#uname").after('<br><span class="error"> enter a valid input</span>');
+                }
+            }
+
+    })
+
+})
+
+
+</script>
+<body>
+    <div class="container">
+        <div class="forms">
+            <h2 style="text-align: center;">Form Validation</h2>
+        <form onsubmit="submitfn(event)" id="myform">
+                    <div>
+                        <label for="">Username:</label><br>
+                        <input id="uname" type="text">
+                        
+                    </div>
+                    <div style="margin-top: 20px;">
+                        <label for="">email :</label><br>
+                        <input id="email" type="email">
+                    </div>
+                    <div  style="margin-top: 20px;">
+                        <label for="">Password:</label><br>
+                        <input id="password" type="password">
+                    </div>
+               
+                <div style=" text-align: center;">
+                    <button type="button"  id="submit">SUBMIT</button>
+                   </div>
+                   </form>
+                   </div>
+    </div>
+</body>
+</html>
