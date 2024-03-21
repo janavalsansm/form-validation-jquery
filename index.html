@@ -8,22 +8,19 @@
     <link rel="stylesheet" href="form.css">
 </head>
 <script>
-$(document).ready(function(){
-    $('#submit').click(function(e){
-        e.preventDefault();
+    $(document).ready(function(){
+        $("#div").hide();
+        $('#submit').click(function(e){
+            e.preventDefault();
             let username = $("#uname").val();
             let email = $("#email").val();
             let password = $("#password").val();
 
             $(".error").remove();
-        
-        
+           
 
-            
-            // name
             if(username.length < 1){
                 $("#uname").after('<br><span class="error"> this field is required</span>');
-                
             }else{
                 let nregex = /^[A-Za-z]+$/ ;
                 let validName = nregex.test(username);
@@ -31,63 +28,51 @@ $(document).ready(function(){
                     $("#uname").after('<br><span class="error">Name should only contain alphabet</span>');
                 }
             }
-            // email
             if(email.length < 1){
                 $("#email").after('<br><span class="error"> this field is required</span>');
-                
             }else{
-                let eregex =/^[A-Z0-9][A-Z0-9._%+-]{0,63}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/;
-                let validEmail = regex.test(email);
+                let eregex =/^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/;
+                let validEmail = eregex.test(email);
                 if(!validEmail){
                     $("#email").after('<br><span class="error">invalid email address</span>');
-                    return;
                 }
             }
-            // password
-            if(password.length < 1){
-                $("#password").after('<br><span class="error"> this field is required</span>');
+            if(password.length < 8){
+                $("#password").after('<br><span class="error">Minimum eight characters</span>');
             }else{
-                let pregex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!_@$%^&*-]).{8,}$/;
-                let validPassword = pregex.test(password);
-                if(!validPassword){
-                    $("#password").after('<br><span class="error"> enter a valid input</span> <br><ul><li class="error">at least one uppercase letter and lowercase letter</li><li class="error">one number and one special character</li></ul><br>');
-                    return;
-                }
+                if ($('.error').length === 0) {
+                    $("#div").show('.hack38-form-success-trigger').fadeOut('.hack38-form-success-trigger');
+                    $('#myform')[0].reset();
+                    }   
             }
-            });
-        });
-
-
+           
+        })
+    })
 </script>
 <body>
     <div class="container">
+        <div  class="show">
+            <div id="div" style="background:rgba(30, 210, 57, 0.881); height:40px; width:500px; margin-left: 20px; text-align: center; border-radius: 20px;font-size: larger;">submitted successfully</div></div>
         <div class="forms">
             <h2 style="text-align: center;">Form Validation</h2>
-        <form  id="myform" method="post">
-                    <div>
-                        <label for="">Username:</label><br>
-                        <input class="input" id="uname" type="text">
+        <form  id="myform">
+                   
+                        <label for="name">Username:</label>
+                        <input class="input" id="uname" type="text"><br>
                         
-                    </div>
-                    <div style="margin-top: 20px;">
-                        <label for="">email :</label><br>
-                        <input class="input" id="email" type="text">
-                    </div>
-                    <div  style="margin-top: 20px;">
-                        <label for="">Password:</label><br>
+                   
+                        <label for="email">email :</label>
+                        <input class="input" id="email" type="text"><br>
+                    
+                        <label for="password">Password:</label>
                         <input class="input" id="password" type="password">
-                    </div>
+                    
                
                 <div style=" text-align: center;">
-                    <input class="btn" type="button" value="Submit" id="submit"></input>
+                    <input class="btn" type="submit" value="Submit" id="submit"></input>
                    </div>
                    </form>
                    </div>
     </div>
-   
-
 </body>
 </html>
-
-
-onsubmit="submitfn(event)"

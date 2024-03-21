@@ -1,26 +1,24 @@
-.container{
-    width: 100%;
-    height: 100vh;
-    padding-top: 100px;
+
+.show{
+    margin-left: 60vh;
+    margin-top: 100px;
 }
 .forms{
     background-color: rgba(43, 109, 137, 0.333);
     width: 400px;
     height: auto;
-    text-align: center;
     border-radius: 8px;
-    margin: auto;
     text-align: left;
     padding-left: 30px; 
-    padding-top: 30px; 
+    margin-top: 10px;
     padding-bottom: 30px;
-   
+    margin-left: 70vh;
+
 }
 .input{
     width: 350px;
     height: 30px;
     border-radius: 5px;
-    border: none;
     padding-left: 5px;
       
 }
