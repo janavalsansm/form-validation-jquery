@@ -8,72 +8,55 @@
     <link rel="stylesheet" href="form.css">
 </head>
 <script>
-    // $(document).ready(function(){
-    //       $("#submit").on(function(e){
-    //         e.preventDefault();
-    //         var username = $("#uname").val();
-    //         var email = $("#email").val();
-    //         var password = $("#password").val();
-
-    //         $(".error").remove();
-    //         if(username.length < 1){
-    //             $("uname").after('<span class="error"> this field is required</span>');
-    //         }
-    //       })
-    // })
-//     $(document).ready(function(){
-//         // function submitfn(event){
-//         //     event.preventDefault();
-//         // }
-//         $('#submit').on('click', function() {  
-//             errorMessage = "" 
-           
-//     if ($('#uname').val() == '') {
-//         $('#uname').after('<br><p class="error"> this field is required</p>');
-        
-//     }
-
-//     if ($('#email').val() == '') {
-//         $('#email').after('<br><p class="error"> this field is required</p>');
-         
-//     }   
-//     if( !valid && errorMessage.length > 0){
-//        alert(errorMessage);
-//     }  
-// });
-//     })
-      
-
 $(document).ready(function(){
     $('#submit').click(function(e){
         e.preventDefault();
-            var username = $("#uname").val();
-            var email = $("#email").val();
-            var password = $("#password").val();
+            let username = $("#uname").val();
+            let email = $("#email").val();
+            let password = $("#password").val();
 
-            $(".error").remove();
+            // $(".error").remove();
+            $(".error").hide( function () {
+           $(".error").remove();
+           });
+
+            
+            // name
             if(username.length < 1){
                 $("#uname").after('<br><span class="error"> this field is required</span>');
+                
             }else{
-                var nameReg = "/^[A-Za-z]+$/" ;
-                var validName = nameReg.test("username")
+                let nregex = /^[A-Za-z]+$/ ;
+                let validName = nregex.test(username);
                 if(!validName){
-                    $("#uname").after('<br><span class="error"> enter a valid input</span>');
+                    $("#uname").after('<br><span class="error">Name should only contain alphabet</span>');
                 }
             }
+            // email
             if(email.length < 1){
                 $("#email").after('<br><span class="error"> this field is required</span>');
+                
             }else{
-                var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/                
-                var validemail = emailReg.test("email")
-                if(!validemail){
-                    $("#email").after('<br><span class="error"> enter a valid input</span>');
+                let eregex =/^[A-Z0-9][A-Z0-9._%+-]{0,63}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/;
+                let validEmail = regex.test(email);
+                if(!validEmail){
+                    $("#email").after('<br><span class="error">invalid email address</span>');
+                    return;
                 }
             }
-
-    })
-
-})
+            // password
+            if(password.length < 1){
+                $("#password").after('<br><span class="error"> this field is required</span>');
+            }else{
+                let pregex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!_@$%^&*-]).{8,}$/;
+                let validPassword = pregex.test(password);
+                if(!validPassword){
+                    $("#password").after('<br><span class="error"> enter a valid input</span> <br><ul><li class="error">at least one uppercase letter and lowercase letter</li><li class="error">one number and one special character</li></ul><br>');
+                    return;
+                }
+            }
+            });
+        });
 
 
 </script>
@@ -81,26 +64,31 @@ $(document).ready(function(){
     <div class="container">
         <div class="forms">
             <h2 style="text-align: center;">Form Validation</h2>
-        <form onsubmit="submitfn(event)" id="myform">
+        <form  id="myform" method="post">
                     <div>
                         <label for="">Username:</label><br>
-                        <input id="uname" type="text">
+                        <input class="input" id="uname" type="text">
                         
                     </div>
                     <div style="margin-top: 20px;">
                         <label for="">email :</label><br>
-                        <input id="email" type="email">
+                        <input class="input" id="email" type="text">
                     </div>
                     <div  style="margin-top: 20px;">
                         <label for="">Password:</label><br>
-                        <input id="password" type="password">
+                        <input class="input" id="password" type="password">
                     </div>
                
                 <div style=" text-align: center;">
-                    <button type="button"  id="submit">SUBMIT</button>
+                    <input class="btn" type="button" value="Submit" id="submit"></input>
                    </div>
                    </form>
                    </div>
     </div>
+   
+
 </body>
 </html>
+
+
+onsubmit="submitfn(event)"
